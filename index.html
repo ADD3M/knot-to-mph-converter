@@ -559,7 +559,7 @@
     <div class="formula">
       <strong>1 knot</strong> = 1.15078 <strong>mph</strong>
     </div>
-</div>
+  </div>
 
   <script>
     const inputValue = document.getElementById('inputValue');
@@ -574,8 +574,17 @@
 
     const CONVERSION_FACTOR = 1.15078;
 
+    // Debounce timer reference
+    let debounceTimer = null;
+    const DEBOUNCE_DELAY = 300;
 
-    // Copy to clipboard
+    // Track last valid conversion
+    let lastValidConversion = false;
+
+    // Track if pulse animation is currently active
+    let pulseAnimationActive = false;
+
+    // Copy to clipboard with better error handling
     copyBtn.addEventListener('click', async () => {
       const text = resultValue.textContent.trim();
       if (!text || text === '0') return;
@@ -590,13 +599,34 @@
           copyBtn.querySelector('svg').style.opacity = '1';
         }, 1500);
       } catch (err) {
+        console.warn('Clipboard API failed, using fallback');
         // Fallback for older browsers
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
+        try {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          copyBtn.classList.add('copied');
+          copyBtn.querySelector('svg').style.opacity = '0.7';
+
+          setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            copyBtn.querySelector('svg').style.opacity = '1';
+          }, 1500);
+        } catch (fallbackErr) {
+          console.error('Fallback clipboard method also failed:', fallbackErr);
+          // Show a visual fallback indicator
+          copyBtn.style.background = 'rgba(231, 76, 60, 0.3)';
+          copyBtn.querySelector('svg').style.color = '#e34c26';
+          setTimeout(() => {
+            copyBtn.style.background = '';
+            copyBtn.querySelector('svg').style.color = '';
+          }, 2000);
+        }
       }
     });
 
@@ -615,17 +645,84 @@
       }, 500);
     });
 
+    function validateInput(value) {
+      // Convert to string and trim whitespace
+      const str = String(value).trim();
+
+      // Handle empty string
+      if (str === '') {
+        return { valid: false, error: 'empty' };
+      }
+
+      // Remove leading/trailing whitespace and handle +/- signs
+      const cleaned = str.replace(/^[\s\+\-]+|[\s\+\-]+$/g, '');
+
+      // Handle non-numeric characters (except decimal point and minus)
+      if (/[^\d.\-]/.test(cleaned)) {
+        return { valid: false, error: 'invalid' };
+      }
+
+      const num = Number(cleaned);
+
+      // Handle NaN
+      if (Number.isNaN(num)) {
+        return { valid: false, error: 'nan' };
+      }
+
+      // Handle Infinity and -Infinity
+      if (!Number.isFinite(num)) {
+        return { valid: false, error: 'infinity' };
+      }
+
+      // Check for extremely large numbers that might cause precision issues
+      if (num > 1e15 || num < -1e15) {
+        return { valid: false, error: 'overflow' };
+      }
+
+      // Handle zero and negative values
+      if (num <= 0) {
+        return { valid: false, error: 'non-positive' };
+      }
+
+      return { valid: true, value: num };
+    }
+
+    function formatResult(value) {
+      // Handle edge case: zero or very small numbers
+      if (value === 0) {
+        return '0.00';
+      }
+
+      // Check for precision issues with very small numbers
+      if (Math.abs(value) < 1e-10) {
+        return '0.00';
+      }
+
+      // Format with proper rounding
+      const formatted = value.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      return formatted;
+    }
+
     function convert() {
-      const value = parseFloat(inputValue.value);
+      const rawInput = inputValue.value;
+      const validation = validateInput(rawInput);
+
+      if (!validation.valid) {
+        // Clear output on invalid input
+        outputValue.value = '';
+        resultValue.textContent = '0';
+        lastValidConversion = false;
+        return;
+      }
+
+      const value = validation.value;
       const direction = document.getElementById('btnKnotsToMph').classList.contains('active')
         ? 'knots-to-mph'
         : 'mph-to-knots';
-
-      if (isNaN(value) || inputValue.value === '') {
-        outputValue.value = '';
-        resultValue.textContent = '0';
-        return;
-      }
 
       let result;
       if (direction === 'knots-to-mph') {
@@ -634,11 +731,29 @@
         result = value / CONVERSION_FACTOR;
       }
 
+      // Check for conversion errors (divide by zero, etc.)
+      if (!Number.isFinite(result) || !Number.isSafeInteger(Math.round(result))) {
+        outputValue.value = '';
+        resultValue.textContent = '0';
+        lastValidConversion = false;
+        return;
+      }
+
       outputValue.value = result.toFixed(6);
-      resultValue.textContent = result.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
+      resultValue.textContent = formatResult(result);
+      lastValidConversion = true;
+
+      // Only fire pulse animation on valid conversions, and only if not already active
+      if (!pulseAnimationActive && lastValidConversion) {
+        pulseAnimationActive = true;
+        resultValue.classList.remove('pulse');
+        void resultValue.offsetWidth; // trigger reflow
+        resultValue.classList.add('pulse');
+        setTimeout(() => {
+          resultValue.classList.remove('pulse');
+          pulseAnimationActive = false;
+        }, 2000);
+      }
     }
 
     function updateUI() {
@@ -659,7 +774,24 @@
       convert();
     }
 
-    inputValue.addEventListener('input', convert);
+    // Debounced input handler
+    inputValue.addEventListener('input', () => {
+      // Clear pulse animation on any input
+      resultValue.classList.remove('pulse');
+      pulseAnimationActive = false;
+
+      // Debounce the conversion
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
+      debounceTimer = setTimeout(convert, DEBOUNCE_DELAY);
+    });
+
+    // Clear conversion on focus loss (user might be correcting input)
+    inputValue.addEventListener('blur', () => {
+      // Let the user see the result of their input
+      convert();
+    });
 
     toggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -669,12 +801,55 @@
       });
     });
 
-    // Add pulse animation when converting
-    inputValue.addEventListener('input', () => {
-      resultValue.classList.remove('pulse');
-      void resultValue.offsetWidth; // trigger reflow
-      resultValue.classList.add('pulse');
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Only trigger shortcuts when input is focused
+      if (document.activeElement !== inputValue) return;
+
+      // Ctrl + C to copy
+      if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault();
+        const text = resultValue.textContent.trim();
+        if (text && text !== '0') {
+          copyBtn.click();
+        }
+      }
+
+      // R for random
+      if (e.key === 'r' || e.key === 'R') {
+        e.preventDefault();
+        randomBtn.click();
+      }
+
+      // Arrow keys to toggle direction
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        const currentDir = document.getElementById('btnKnotsToMph').classList.contains('active');
+        const nextDir = currentDir ? 'mph-to-knots' : 'knots-to-mph';
+        const nextBtn = document.getElementById(nextDir === 'knots-to-mph' ? 'btnKnotsToMph' : 'btnMphToKnots');
+        nextBtn.click();
+      }
     });
+
+    // Handle Enter key to clear input
+    inputValue.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        inputValue.value = '';
+        convert();
+      }
+    });
+
+    // Handle paste event with validation
+    inputValue.addEventListener('paste', (e) => {
+      // Wait for the pasted value to appear
+      setTimeout(() => {
+        convert();
+      }, 0);
+    });
+
+    // Initialize with a default value
+    inputValue.value = '10';
+    convert();
   </script>
 </body>
 </html>

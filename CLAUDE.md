@@ -33,16 +33,16 @@ The entire application is contained in one file for simplicity and portability.
   - Frosted glass effect on cards using `backdrop-filter: blur(20px)`
   - Smooth transitions and hover effects
   - Responsive design for mobile devices
-  - Animated arrow indicator that rotates when direction changes
+  - Animated arrow indicator that rotates 180° when the conversion direction is toggled (only on toggle, not on each conversion)
   - Pulse animation on result when converting
   - Ripple effects on button press
 - **JavaScript**: Embedded in `<script>` tags with:
   - Real-time conversion on `input` event
   - Direction toggle handling
-  - Number formatting with toLocaleString for proper comma/thousand separators
+  - Number formatting with `toLocaleString` for proper comma/thousand separators
   - Clipboard API for copying results
   - Confetti animation system
-  - Slow color cycling for interactive buttons
+  - Slow color cycling for interactive buttons (full RGB spectrum over 9 seconds)
 
 ## File Structure
 
@@ -74,4 +74,5 @@ Since there are no build dependencies, you can add new features directly to the 
 - The result is displayed with 2 decimal places by default, formatted with commas for thousands
 - The pulse animation uses a reflow trick (`void resultValue.offsetWidth`) to reset the animation on each conversion
 - Confetti is fired on copy, direction toggle, and random speed generation
-- Buttons slowly cycle through the rainbow (a new hue every 3 seconds)
+- Buttons slowly cycle through a full RGB spectrum over 9 seconds (not individual 3-second intervals)
+- The animated arrow rotates 180° only when the conversion direction is toggled (not on each conversion)
