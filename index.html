@@ -19,6 +19,18 @@
       align-items: center;
       background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a0a0a 100%);
       padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('background.jpg') center/cover no-repeat;
+      filter: blur(20px) brightness(0.5);
+      z-index: -1;
+      pointer-events: none;
     }
 
     .container {
@@ -379,16 +391,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- Google AdSense -->
-    <div class="adsense-container" style="text-align: center; margin-bottom: 20px;">
-      <ins class="adsbygoogle" style="display:block; text-align:center;"
-           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-           data-ad-slot="XXXXXXXXXX"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
     <h1>Knot to MPH Converter</h1>
     <p class="subtitle">Convert between nautical miles per hour and miles per hour</p>
 
