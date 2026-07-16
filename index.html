@@ -81,6 +81,32 @@
       font-size: 16px;
     }
 
+    .flag-icon {
+      font-size: 18px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      min-width: 20px;
+      min-height: 20px;
+    }
+
+    /* Ensure emoji flags render properly across browsers */
+    .flag-icon::before {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    /* Prevent emoji from being treated as an image in some browsers */
+    .flag-icon {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "kern" 1;
+      font-kerning: normal;
+    }
+
     .input-wrapper {
       position: relative;
       margin-bottom: 16px;
