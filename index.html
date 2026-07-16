@@ -96,6 +96,20 @@
       color: #e0e6ff;
       transition: all 0.3s ease;
       outline: none;
+      -moz-appearance: textfield;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"]::-moz-outer-spin-button,
+    input[type="number"]::-moz-inner-spin-button {
+      display: none;
     }
 
     input[type="number"]:focus {
