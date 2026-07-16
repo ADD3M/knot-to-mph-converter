@@ -17,7 +17,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a0a0a 100%);
       padding: 20px;
       position: relative;
       overflow: hidden;
@@ -27,7 +26,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: url('background.jpg') center/cover no-repeat;
+      background: url('assets/background.jpg') center/cover no-repeat;
       filter: blur(20px) brightness(0.5);
       z-index: -1;
       pointer-events: none;
@@ -443,6 +442,37 @@
   </div>
 
   <script>
+    // Load and decrypt background image
+    (async () => {
+      const encryptedB64 = await fetch('assets/background.enc.b64').then(r > r.text());
+      const encrypted = atob(encryptedB64);
+      const key = 'knot2mph_bg_2026';
+      const iv = encrypted.slice(0, 16);
+      const cipherText = encrypted.slice(16);
+
+      const decipher = crypto.subtle.importKey(
+        'raw',
+        Buffer.from(iv, 'hex'),
+        { name: 'AES-CBC' },
+        false,
+        ['decrypt']
+      );
+
+      const decrypted = await crypto.subtle.decrypt(
+        { name: 'AES-CBC', iv: Buffer.from(iv, 'hex') },
+        decipher,
+        Buffer.from(cipherText, 'hex')
+      );
+
+      const blob = new Blob([decrypted]);
+      const url = URL.createObjectURL(blob);
+      document.body.style.backgroundImage = `url('${url}')`;
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';
+      document.body.style.backgroundAttachment = 'fixed';
+      URL.revokeObjectURL(url);
+    })();
+
     const inputValue = document.getElementById('inputValue');
     const outputValue = document.getElementById('outputValue');
     const resultValue = document.getElementById('resultValue');
