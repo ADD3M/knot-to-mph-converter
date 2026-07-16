@@ -42,6 +42,7 @@ The entire application is contained in one file for simplicity and portability.
   - Number formatting with toLocaleString for proper comma/thousand separators
   - Clipboard API for copying results
   - Confetti animation system
+  - Slow color cycling for interactive buttons
 
 ## File Structure
 
@@ -73,3 +74,4 @@ Since there are no build dependencies, you can add new features directly to the 
 - The result is displayed with 2 decimal places by default, formatted with commas for thousands
 - The pulse animation uses a reflow trick (`void resultValue.offsetWidth`) to reset the animation on each conversion
 - Confetti is fired on copy, direction toggle, and random speed generation
+- Buttons slowly cycle through the rainbow (a new hue every 3 seconds)

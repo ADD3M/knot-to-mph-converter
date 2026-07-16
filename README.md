@@ -14,6 +14,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 - **Random speed generator** — get a random speed for fun
 - **Direction toggle** — flip between conversion modes
 - **Smooth animations** — button ripples, hover effects, pulse on convert
+- **Slow color cycling** — buttons drift through the color spectrum over time
 
 ---
 
@@ -43,6 +44,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 - **Frosted glass effect** using `backdrop-filter: blur(20px)`
 - **Smooth animations** — ripple effects on button press, hover transitions, pulse animation on conversion
+- **Slow color cycling** — buttons slowly drift through the rainbow (a new hue every 3 seconds)
 - **Responsive layout** — looks great on mobile and desktop
 - **Gradient background** — deep navy blue theme
 - **Dark mode by default** — no theme toggles needed
@@ -78,6 +80,7 @@ knot to mph/
 | **Get random speed** | Click the "Random Speed" button (shakes briefly) |
 | **Change precision** | Use the dropdown in the input field (2/4/6 decimals) |
 | **Flip conversion** | Click the toggle buttons (ripple effect!) |
+| **Watch the colors shift** | Buttons slowly cycle through the rainbow over time |
 
 ---
 
