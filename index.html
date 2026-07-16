@@ -17,25 +17,25 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0a0a0a 100%);
       padding: 20px;
     }
 
     .container {
       width: 100%;
       max-width: 480px;
-      background: rgba(30, 30, 50, 0.85);
+      background: rgba(20, 20, 20, 0.95);
       backdrop-filter: blur(20px);
       border-radius: 24px;
       padding: 40px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
-                    0 0 0 1px rgba(100, 150, 255, 0.1) inset;
-      border: 1px solid rgba(100, 150, 255, 0.1);
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9),
+                    0 0 0 1px rgba(80, 80, 80, 0.2) inset;
+      border: 1px solid rgba(80, 80, 80, 0.2);
     }
 
     h1 {
       text-align: center;
-      color: #e0e6ff;
+      color: #e5e5e5;
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 8px;
@@ -43,26 +43,26 @@
 
     .subtitle {
       text-align: center;
-      color: #8ba0cc;
+      color: #7a7a7a;
       font-size: 14px;
       margin-bottom: 32px;
     }
 
     .card {
-      background: linear-gradient(145deg, rgba(50, 60, 90, 0.6), rgba(35, 45, 70, 0.5));
-      border: 1px solid rgba(100, 150, 255, 0.15);
+      background: linear-gradient(145deg, rgba(35, 35, 35, 0.8), rgba(25, 25, 25, 0.7));
+      border: 1px solid rgba(60, 60, 60, 0.3);
       border-radius: 16px;
       padding: 28px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
-                    0 0 0 1px rgba(100, 150, 255, 0.05) inset;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5),
+                    0 0 0 1px rgba(60, 60, 60, 0.08) inset;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
-                    0 0 0 1px rgba(100, 150, 255, 0.1) inset;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6),
+                    0 0 0 1px rgba(60, 60, 60, 0.15) inset;
     }
 
     .label {
@@ -72,7 +72,7 @@
       margin-bottom: 8px;
       font-size: 13px;
       font-weight: 600;
-      color: #8ba0cc;
+      color: #9a9a9a;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -86,10 +86,10 @@
       width: 100%;
       padding: 16px 16px 16px 48px;
       font-size: 18px;
-      border: 2px solid rgba(100, 150, 255, 0.2);
+      border: 2px solid rgba(60, 60, 60, 0.4);
       border-radius: 12px;
-      background: rgba(20, 25, 45, 0.7);
-      color: #e0e6ff;
+      background: rgba(15, 15, 15, 0.9);
+      color: #e5e5e5;
       transition: all 0.3s ease;
       outline: none;
       -moz-appearance: textfield;
@@ -109,8 +109,8 @@
     }
 
     input[type="number"]:focus {
-      border-color: #4dabf7;
-      box-shadow: 0 0 0 4px rgba(77, 171, 247, 0.25);
+      border-color: #b0b0b0;
+      box-shadow: 0 0 0 4px rgba(80, 80, 80, 0.3);
     }
 
     input[type="number"]:focus::placeholder {
@@ -118,8 +118,8 @@
     }
 
     input[type="number"]:disabled {
-      background: rgba(40, 50, 80, 0.7);
-      color: #8ba0cc;
+      background: rgba(30, 30, 30, 0.8);
+      color: #8a8a8a;
     }
 
     .unit {
@@ -127,7 +127,7 @@
       right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: #6a7a9a;
+      color: #5a5a5a;
       font-size: 14px;
       font-weight: 500;
     }
@@ -141,10 +141,10 @@
     .toggle-btn {
       flex: 1;
       padding: 12px 16px;
-      border: 2px solid rgba(100, 150, 255, 0.2);
+      border: 2px solid rgba(60, 60, 60, 0.3);
       border-radius: 12px;
-      background: rgba(20, 25, 45, 0.5);
-      color: #8ba0cc;
+      background: rgba(15, 15, 15, 0.6);
+      color: #7a7a7a;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
@@ -162,7 +162,7 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       transform: translate(-50%, -50%);
       transition: width 0.6s ease, height 0.6s ease;
     }
@@ -173,15 +173,15 @@
     }
 
     .toggle-btn:hover {
-      border-color: rgba(100, 150, 255, 0.5);
-      color: #e0e6ff;
+      border-color: rgba(80, 80, 80, 0.5);
+      color: #d0d0d0;
     }
 
     .toggle-btn.active {
-      background: linear-gradient(135deg, #4dabf7, #228be6);
-      border-color: #228be6;
+      background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+      border-color: #555555;
       color: #fff;
-      box-shadow: 0 4px 12px rgba(77, 171, 247, 0.4);
+      box-shadow: 0 4px 12px rgba(60, 60, 60, 0.5);
     }
 
     .toggle-btn.active::after {
@@ -190,21 +190,17 @@
       inset: 0;
       border-radius: 12px;
       padding: 2px;
-      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.08), transparent);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
     }
 
-    .toggle-btn.color-cycle {
-      animation: hueCycle 9s ease-in-out infinite;
-    }
-
     .arrow {
       text-align: center;
       font-size: 24px;
-      color: #adb5bd;
+      color: #9a9a9a;
       margin: 12px 0;
     }
 
@@ -222,19 +218,19 @@
     .result {
       text-align: center;
       padding-top: 20px;
-      border-top: 1px solid rgba(100, 150, 255, 0.15);
+      border-top: 1px solid rgba(60, 60, 60, 0.2);
     }
 
     .result-label {
       font-size: 13px;
-      color: #6a7a9a;
+      color: #6a6a6a;
       margin-bottom: 6px;
     }
 
     .result-value {
       font-size: 42px;
       font-weight: 700;
-      background: linear-gradient(135deg, #4dabf7, #8ba0cc);
+      background: linear-gradient(135deg, #c5c5c5, #a5a5a5);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -249,8 +245,8 @@
       height: 32px;
       border: none;
       border-radius: 8px;
-      background: rgba(77, 171, 247, 0.15);
-      color: #4dabf7;
+      background: rgba(60, 60, 60, 0.2);
+      color: #a0a0a0;
       font-size: 16px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -265,7 +261,7 @@
       inset: 0;
       border-radius: 8px;
       padding: 2px;
-      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.08), transparent);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -279,8 +275,8 @@
     }
 
     .copy-btn:hover {
-      background: rgba(77, 171, 247, 0.3);
-      color: #8ba0cc;
+      background: rgba(60, 60, 60, 0.35);
+      color: #d0d0d0;
       transform: translateY(-1px);
     }
 
@@ -289,8 +285,8 @@
     }
 
     .copy-btn.copied {
-      background: rgba(40, 167, 69, 0.25);
-      color: #28a745;
+      background: rgba(50, 90, 50, 0.35);
+      color: #60c060;
     }
 
     .copy-btn.copied svg {
@@ -316,78 +312,16 @@
     @keyframes bounce {
       margin-top: 24px;
       padding: 16px;
-      background: rgba(20, 25, 45, 0.5);
-      border: 1px solid rgba(100, 150, 255, 0.15);
+      background: rgba(15, 15, 15, 0.6);
+      border: 1px solid rgba(60, 60, 60, 0.2);
       border-radius: 12px;
       font-size: 13px;
-      color: #8ba0cc;
+      color: #7a7a7a;
       text-align: center;
     }
 
     .formula strong {
-      color: #e0e6ff;
-    }
-
-    .random-btn {
-      width: 100%;
-      padding: 14px;
-      margin-top: 16px;
-      border: 2px solid rgba(100, 150, 255, 0.2);
-      border-radius: 12px;
-      background: rgba(20, 25, 45, 0.5);
-      color: #e0e6ff;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .random-btn::before {
-      content: '';
-      position: absolute;
-      inset: -50%;
-      background: linear-gradient(135deg, transparent, rgba(77, 171, 247, 0.3), transparent);
-      transform: translateX(-50%);
-      transition: transform 0.6s ease;
-    }
-
-    .random-btn:active::before {
-      transform: translateX(0);
-    }
-
-    .random-btn:hover {
-      border-color: #4dabf7;
-      background: rgba(77, 171, 247, 0.1);
-    }
-
-    .random-btn:active {
-      transform: scale(0.98);
-    }
-
-    .random-btn.shaking {
-      animation: shake 0.5s ease-in-out;
-    }
-
-    .random-btn.active.color-cycle {
-      animation: hueCycle 9s ease-in-out infinite;
-    }
-
-    .random-btn {
-      animation: softPulse 3s ease-in-out infinite;
-    }
-
-    .random-btn {
-      animation: softPulse 3s ease-in-out infinite;
-    }
-
-    .random-btn {
-      animation: softPulse 3s ease-in-out infinite;
+      color: #e5e5e5;
     }
 
     @keyframes shake {
@@ -494,7 +428,6 @@
       </svg>
     </div>
 
-    <button class="random-btn" id="randomBtn" title="Generate random speed">
   </div>
 
   <script>
@@ -506,7 +439,6 @@
     const arrowIcon = document.getElementById('arrowIcon');
     const toggleBtns = document.querySelectorAll('.toggle-btn');
     const copyBtn = document.getElementById('copyBtn');
-    const randomBtn = document.getElementById('randomBtn');
 
     const CONVERSION_FACTOR = 1.15078;
 
@@ -556,7 +488,7 @@
         } catch (fallbackErr) {
           console.error('Fallback clipboard method also failed:', fallbackErr);
           // Show a visual fallback indicator
-          copyBtn.style.background = 'rgba(231, 76, 60, 0.3)';
+          copyBtn.style.background = 'rgba(180, 60, 60, 0.3)';
           copyBtn.querySelector('svg').style.color = '#e34c26';
           setTimeout(() => {
             copyBtn.style.background = '';
@@ -564,21 +496,6 @@
           }, 2000);
         }
       }
-    });
-
-    // Random generator
-    randomBtn.addEventListener('click', () => {
-      randomBtn.classList.add('shaking');
-
-      setTimeout(() => {
-        const direction = document.getElementById('btnKnotsToMph').classList.contains('active');
-        const min = 0;
-        const max = direction ? 100 : 150;
-        const randomValue = Math.floor(Math.random() * max) + min;
-        inputValue.value = randomValue;
-        convert();
-        randomBtn.classList.remove('shaking');
-      }, 500);
     });
 
     function validateInput(value) {
@@ -594,7 +511,7 @@
       const cleaned = str.replace(/^[\s\+\-]+|[\s\+\-]+$/g, '');
 
       // Handle non-numeric characters (except decimal point and minus)
-      if (/[^\d.\-]/.test(cleaned)) {
+      if (/[^\d\.\-]/.test(cleaned)) {
         return { valid: false, error: 'invalid' };
       }
 
@@ -749,12 +666,6 @@
         if (text && text !== '0') {
           copyBtn.click();
         }
-      }
-
-      // R for random
-      if (e.key === 'r' || e.key === 'R') {
-        e.preventDefault();
-        randomBtn.click();
       }
 
       // Arrow keys to toggle direction
