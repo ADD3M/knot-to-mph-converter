@@ -1,10 +1,10 @@
-# 🌊 Knot to MPH Converter
+# Knot to MPH Converter
 
 A sleek, real-time conversion tool between **knots** (nautical miles per hour) and **miles per hour (MPH)**. Built with pure HTML, CSS, and JavaScript — no frameworks, no dependencies, runs directly in any browser.
 
 ---
 
-## ✨ Features
+## Features
 
 - **Real-time conversion** — results update instantly as you type
 - **Bidirectional** — convert from knots to MPH or MPH to knots
@@ -18,7 +18,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 1. Open `index.html` in any modern web browser
 2. Enter a numeric value in the input field
@@ -29,7 +29,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 ---
 
-## 📐 Conversion Formula
+## Conversion Formula
 
 | Direction | Formula |
 |-----------|---------|
@@ -40,7 +40,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 ---
 
-## 🎨 Design Highlights
+## Design Highlights
 
 - **Frosted glass effect** using `backdrop-filter: blur(20px)`
 - **Smooth animations** — ripple effects on button press, hover transitions, pulse animation on conversion
@@ -52,7 +52,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose |
 |------------|---------|
@@ -62,7 +62,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 knot to mph/
@@ -73,7 +73,7 @@ knot to mph/
 
 ---
 
-## 🎯 Quick Tips
+## Quick Tips
 
 | Action | How |
 |--------|-----|
@@ -84,7 +84,7 @@ knot to mph/
 
 ---
 
-## 🌐 Browser Compatibility
+## Browser Compatibility
 
 | Browser | Version | Support |
 |---------|---------|---------|
@@ -96,7 +96,7 @@ knot to mph/
 
 ---
 
-## 📴 Offline Usage
+## Offline Usage
 
 This application works entirely offline. Simply:
 
@@ -108,7 +108,7 @@ You can also host it on any static file server (GitHub Pages, Netlify, Vercel, e
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
@@ -122,7 +122,7 @@ You can also host it on any static file server (GitHub Pages, Netlify, Vercel, e
 
 ---
 
-## 👨‍💻 Developer Extension Guide
+## Developer Extension Guide
 
 ### Forking and Customizing
 
@@ -190,7 +190,7 @@ Since there are no build dependencies, you can add new features directly to the 
 
 ---
 
-## 📄 License
+## License
 
 MIT — feel free to use, modify, and share!
 

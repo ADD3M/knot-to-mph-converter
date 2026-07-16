@@ -77,36 +77,6 @@
       letter-spacing: 0.5px;
     }
 
-    .label .flag {
-      font-size: 16px;
-    }
-
-    .flag-icon {
-      font-size: 18px;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      vertical-align: middle;
-      min-width: 20px;
-      min-height: 20px;
-    }
-
-    /* Ensure emoji flags render properly across browsers */
-    .flag-icon::before {
-      content: '';
-      display: inline-block;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-
-    /* Prevent emoji from being treated as an image in some browsers */
-    .flag-icon {
-      font-variant-numeric: tabular-nums;
-      font-feature-settings: "kern" 1;
-      font-kerning: normal;
-    }
-
     .input-wrapper {
       position: relative;
       margin-bottom: 16px;
@@ -344,63 +314,6 @@
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      25% { transform: translateY(-2px); }
-      50% { transform: translateY(1px); }
-      75% { transform: translateY(-1px); }
-    }
-
-    .unit-info {
-      position: relative;
-      display: inline-block;
-    }
-
-    .unit-info .flag {
-      cursor: help;
-      transition: transform 0.2s ease;
-    }
-
-    .unit-info .flag:hover {
-      transform: scale(1.2);
-    }
-
-    .unit-tooltip {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(8px);
-      padding: 8px 12px;
-      font-size: 11px;
-      font-weight: 500;
-      color: #e0e6ff;
-      background: rgba(30, 30, 50, 0.95);
-      border: 1px solid rgba(100, 150, 255, 0.2);
-      border-radius: 6px;
-      white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.2s ease;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .unit-tooltip::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 6px solid transparent;
-      border-top-color: rgba(30, 30, 50, 0.95);
-    }
-
-    .unit-info:hover .unit-tooltip {
-      opacity: 1;
-      visibility: visible;
-      bottom: calc(100% + 4px);
-    }
-
-    .formula {
       margin-top: 24px;
       padding: 16px;
       background: rgba(20, 25, 45, 0.5);
@@ -532,15 +445,11 @@
 </head>
 <body>
   <div class="container">
-    <h1>🌊 Knot to MPH Converter</h1>
+    <h1>Knot to MPH Converter</h1>
     <p class="subtitle">Convert between nautical miles per hour and miles per hour</p>
 
     <div class="card">
       <div class="label">
-        <span class="flag unit-info">
-          <span class="flag-icon">🇺🇸</span>
-          <span class="unit-tooltip">Knots = nautical miles per hour. Used in maritime and aviation navigation.</span>
-        </span>
         <span>From</span>
       </div>
       <div class="input-wrapper">
@@ -566,10 +475,6 @@
 
     <div class="card">
       <div class="label">
-        <span class="flag unit-info">
-          <span class="flag-icon">🇬🇧</span>
-          <span class="unit-tooltip">MPH = miles per hour. Commonly used in the US and UK for road speeds.</span>
-        </span>
         <span>To</span>
       </div>
       <div class="input-wrapper">
