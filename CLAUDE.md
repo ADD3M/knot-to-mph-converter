@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A simple two-way conversion website between **knots** (nautical miles per hour) and **miles per hour (MPH)**, built as a single HTML file with embedded CSS and JavaScript.
+A simple two-way conversion website between **knots** (nautical miles per hour) and **miles per hour (MPH)**, built as a single HTML file with embedded CSS and JavaScript. No frameworks or build steps required.
 
 ## Quick Start
 
@@ -35,26 +35,27 @@ The entire application is contained in one file for simplicity and portability.
   - Responsive design for mobile devices
   - Animated arrow indicator that rotates when direction changes
   - Pulse animation on result when converting
+  - Ripple effects on button press
 - **JavaScript**: Embedded in `<script>` tags with:
   - Real-time conversion on `input` event
   - Direction toggle handling
   - Number formatting with toLocaleString for proper comma/thousand separators
+  - Clipboard API for copying results
+  - Confetti animation system
 
 ## File Structure
 
 ```
 knot to mph/
 ├── index.html  # Main application (HTML + CSS + JS)
-└── CLAUDE.md  # This file
+├── README.md   # Documentation
+└── CLAUDE.md   # This file
 ```
 
 ## Common Development Tasks
 
-### Adding a New Conversion
-To add support for a new unit, update the conversion logic in the `convert()` function and add the appropriate UI elements.
-
 ### Changing the Conversion Factor
-Edit the `CONVERSION_FACTOR` constant:
+Edit the `CONVERSION_FACTOR` constant in the JavaScript:
 ```javascript
 const CONVERSION_FACTOR = 1.15078; // 1 knot = 1.15078 mph
 ```
@@ -62,12 +63,13 @@ const CONVERSION_FACTOR = 1.15078; // 1 knot = 1.15078 mph
 ### Modifying the UI
 The CSS is fully scoped and organized. To change colors, look for the gradient definitions and color tokens like `#1a1a2e`, `#4dabf7`, etc.
 
-### Browser Testing
-Test in multiple browsers to ensure the frosted glass effect and animations render correctly. The backdrop-filter may have limited support in older browsers.
+### Adding New Features
+Since there are no build dependencies, you can add new features directly to the HTML/JS without worrying about bundling or transpilation.
 
 ## Notes
 
 - The `step="any"` attribute on inputs allows decimal values
-- Zero and negative values are accepted (the min="0" attribute is present but doesn't prevent input)
-- The result is displayed with up to 6 decimal places, formatted with commas for thousands
+- Zero and negative values are accepted
+- The result is displayed with 2 decimal places by default, formatted with commas for thousands
 - The pulse animation uses a reflow trick (`void resultValue.offsetWidth`) to reset the animation on each conversion
+- Confetti is fired on copy, direction toggle, and random speed generation

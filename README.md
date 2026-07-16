@@ -1,6 +1,6 @@
 # 🌊 Knot to MPH Converter
 
-A sleek, real-time conversion tool between **knots** (nautical miles per hour) and **miles per hour (MPH)**. Built with pure HTML, CSS, and JavaScript — no frameworks, no dependencies.
+A sleek, real-time conversion tool between **knots** (nautical miles per hour) and **miles per hour (MPH)**. Built with pure HTML, CSS, and JavaScript — no frameworks, no dependencies, runs directly in any browser.
 
 ---
 
@@ -8,13 +8,12 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 - **Real-time conversion** — results update instantly as you type
 - **Bidirectional** — convert from knots to MPH or MPH to knots
-- **Dark theme by default** — easy on the eyes with a modern frosted-glass aesthetic
-- **Copy to clipboard** — one-click copy of the result
-- **Custom precision** — choose 2, 4, or 6 decimal places
-- **Unit info tooltips** — hover over flags to learn more about each unit
+- **Dark theme by default** — modern frosted-glass aesthetic
+- **Copy to clipboard** — one-click copy with animated feedback
+- **Unit info tooltips** — hover over flags to learn about each unit
 - **Random speed generator** — get a random speed for fun
-- **Direction toggle** — flip between conversion modes with a single click
-- **Formula reference** — always know the conversion math
+- **Direction toggle** — flip between conversion modes
+- **Smooth animations** — button ripples, hover effects, pulse on convert
 
 ---
 
@@ -43,7 +42,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 ## 🎨 Design Highlights
 
 - **Frosted glass effect** using `backdrop-filter: blur(20px)`
-- **Smooth animations** — hover effects, button transitions, and a pulse animation on conversion
+- **Smooth animations** — ripple effects on button press, hover transitions, pulse animation on conversion
 - **Responsive layout** — looks great on mobile and desktop
 - **Gradient background** — deep navy blue theme
 - **Dark mode by default** — no theme toggles needed
@@ -57,7 +56,6 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 | HTML5 | Semantic markup |
 | CSS3 | Styling, animations, frosted glass effects |
 | Vanilla JavaScript | Real-time conversion logic, DOM manipulation |
-| Vite | Development server & build tool (optional) |
 
 ---
 
@@ -66,9 +64,8 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 ```
 knot to mph/
 ├── index.html      # Main application (HTML + CSS + JS)
-├── package.json    # Vite configuration
-├── vite.config.js  # Vite server settings
-└── README.md       # This file
+├── README.md       # Documentation
+└── CLAUDE.md       # Project guidance
 ```
 
 ---
@@ -77,10 +74,10 @@ knot to mph/
 
 | Action | How |
 |--------|-----|
-| **Copy result** | Click the clipboard icon next to the result |
-| **Get random speed** | Click the "Random Speed" button (shakes briefly!) |
+| **Copy result** | Click the clipboard icon (confetti celebrates!) |
+| **Get random speed** | Click the "Random Speed" button (shakes briefly) |
 | **Change precision** | Use the dropdown in the input field (2/4/6 decimals) |
-| **Flip conversion** | Click the toggle buttons to switch directions |
+| **Flip conversion** | Click the toggle buttons (ripple effect!) |
 
 ---
 
