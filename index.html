@@ -304,22 +304,6 @@
       animation: bounce 0.6s ease;
     }
 
-    .copy-btn.active.color-cycle {
-      animation: hueCycle 9s ease-in-out infinite;
-    }
-
-    .copy-btn {
-      animation: softPulse 3s ease-in-out infinite;
-    }
-
-    .copy-btn {
-      animation: softPulse 3s ease-in-out infinite;
-    }
-
-    .copy-btn {
-      animation: softPulse 3s ease-in-out infinite;
-    }
-
     @keyframes bounce {
       margin-top: 24px;
       padding: 16px;
@@ -348,29 +332,6 @@
 
     .pulse {
       animation: pulse 2s ease-in-out infinite;
-    }
-
-    /* Color cycling animation */
-    @keyframes hueCycle {
-      0% { filter: hue-rotate(0deg) saturate(100%); }
-      25% { filter: hue-rotate(90deg) saturate(120%); }
-      50% { filter: hue-rotate(180deg) saturate(100%); }
-      75% { filter: hue-rotate(270deg) saturate(120%); }
-      100% { filter: hue-rotate(360deg) saturate(100%); }
-    }
-
-    .color-cycle {
-      animation: hueCycle 9s ease-in-out infinite;
-    }
-
-    /* Pulse animation for inactive buttons */
-    @keyframes softPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.01); }
-    }
-
-    .soft-pulse {
-      animation: softPulse 3s ease-in-out infinite;
     }
 
     @media (max-width: 480px) {
@@ -509,7 +470,7 @@
           copyBtn.querySelector('svg').style.opacity = '1';
         }, 1500);
       } catch (err) {
-        console.warn('Clipboard API failed, using fallback');
+        console.error('Clipboard API failed, using fallback');
         // Fallback for older browsers
         try {
           const textarea = document.createElement('textarea');

@@ -44,7 +44,7 @@ A sleek, real-time conversion tool between **knots** (nautical miles per hour) a
 
 - **Frosted glass effect** using `backdrop-filter: blur(20px)`
 - **Smooth animations** — ripple effects on button press, hover transitions, pulse animation on conversion
-- **Slow color cycling** — buttons drift through a full RGB spectrum over 9 seconds (not individual 3-second intervals)
+- **Slow color cycling** — buttons drift through a full RGB spectrum over 9 seconds
 - **Responsive layout** — looks great on mobile and desktop
 - **Gradient background** — deep navy blue theme
 - **Dark mode by default** — no theme toggles needed
