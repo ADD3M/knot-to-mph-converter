@@ -20,28 +20,17 @@
       padding: 20px;
       position: relative;
       overflow: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: url('assets/background.jpg') center/cover no-repeat;
-      filter: blur(20px) brightness(0.5);
-      z-index: -1;
-      pointer-events: none;
+      background: linear-gradient(135deg, #2b2b2b 0%, #111111 45%, #050505 100%);
     }
 
     .container {
       width: 100%;
       max-width: 480px;
-      background: rgba(20, 20, 20, 0.95);
-      backdrop-filter: blur(20px);
+      background: #171717;
       border-radius: 24px;
       padding: 40px;
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9),
-                    0 0 0 1px rgba(80, 80, 80, 0.2) inset;
-      border: 1px solid rgba(80, 80, 80, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(125, 125, 125, 0.12);
     }
 
     h1 {
@@ -60,20 +49,18 @@
     }
 
     .card {
-      background: linear-gradient(145deg, rgba(35, 35, 35, 0.8), rgba(25, 25, 25, 0.7));
-      border: 1px solid rgba(60, 60, 60, 0.3);
+      background: #1d1d1d;
+      border: 1px solid rgba(130, 130, 130, 0.12);
       border-radius: 16px;
       padding: 28px;
       margin-bottom: 20px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5),
-                    0 0 0 1px rgba(60, 60, 60, 0.08) inset;
+      box-shadow: none;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6),
-                    0 0 0 1px rgba(60, 60, 60, 0.15) inset;
+      box-shadow: none;
     }
 
     .label {
@@ -152,9 +139,9 @@
     .toggle-btn {
       flex: 1;
       padding: 12px 16px;
-      border: 2px solid rgba(60, 60, 60, 0.3);
+      border: 1px solid rgba(120, 120, 120, 0.16);
       border-radius: 12px;
-      background: rgba(15, 15, 15, 0.6);
+      background: #1a1a1a;
       color: #7a7a7a;
       font-size: 14px;
       font-weight: 600;
@@ -165,47 +152,16 @@
       overflow: hidden;
     }
 
-    .toggle-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s ease, height 0.6s ease;
-    }
-
-    .toggle-btn:active::before {
-      width: 300px;
-      height: 300px;
-    }
-
     .toggle-btn:hover {
-      border-color: rgba(80, 80, 80, 0.5);
+      border-color: rgba(140, 140, 140, 0.28);
       color: #d0d0d0;
     }
 
     .toggle-btn.active {
-      background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
-      border-color: #555555;
+      background: #2a2a2a;
+      border-color: rgba(180, 180, 180, 0.28);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(60, 60, 60, 0.5);
-    }
-
-    .toggle-btn.active::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      padding: 2px;
-      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
+      box-shadow: none;
     }
 
     .arrow {
@@ -254,9 +210,9 @@
       right: 8px;
       width: 32px;
       height: 32px;
-      border: none;
+      border: 1px solid rgba(120, 120, 120, 0.14);
       border-radius: 8px;
-      background: rgba(60, 60, 60, 0.2);
+      background: rgba(60, 60, 60, 0.18);
       color: #a0a0a0;
       font-size: 16px;
       cursor: pointer;
@@ -266,27 +222,8 @@
       justify-content: center;
     }
 
-    .copy-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 8px;
-      padding: 2px;
-      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .copy-btn:hover::before {
-      opacity: 1;
-    }
-
     .copy-btn:hover {
-      background: rgba(60, 60, 60, 0.35);
+      background: rgba(60, 60, 60, 0.28);
       color: #d0d0d0;
       transform: translateY(-1px);
     }
@@ -403,37 +340,6 @@
   </div>
 
   <script>
-    // Load and decrypt background image
-    (async () => {
-      const encryptedB64 = await fetch('assets/background.enc.b64').then(r > r.text());
-      const encrypted = atob(encryptedB64);
-      const key = 'knot2mph_bg_2026';
-      const iv = encrypted.slice(0, 16);
-      const cipherText = encrypted.slice(16);
-
-      const decipher = crypto.subtle.importKey(
-        'raw',
-        Buffer.from(iv, 'hex'),
-        { name: 'AES-CBC' },
-        false,
-        ['decrypt']
-      );
-
-      const decrypted = await crypto.subtle.decrypt(
-        { name: 'AES-CBC', iv: Buffer.from(iv, 'hex') },
-        decipher,
-        Buffer.from(cipherText, 'hex')
-      );
-
-      const blob = new Blob([decrypted]);
-      const url = URL.createObjectURL(blob);
-      document.body.style.backgroundImage = `url('${url}')`;
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundPosition = 'center';
-      document.body.style.backgroundAttachment = 'fixed';
-      URL.revokeObjectURL(url);
-    })();
-
     const inputValue = document.getElementById('inputValue');
     const outputValue = document.getElementById('outputValue');
     const resultValue = document.getElementById('resultValue');
