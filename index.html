@@ -23,6 +23,38 @@
       background: linear-gradient(135deg, #2b2b2b 0%, #111111 45%, #050505 100%);
     }
 
+    .brand-link {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .brand-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.32);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .brand-link img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #111;
+    }
+
     .container {
       width: 100%;
       max-width: 480px;
@@ -294,6 +326,10 @@
   </style>
 </head>
 <body>
+  <a class="brand-link" href="https://add3m.co.uk" aria-label="Visit ADD3M website">
+    <img src="assets/VfKrZ.jpg" alt="ADD3M logo">
+  </a>
+
   <div class="container">
     <h1>Knot to MPH Converter</h1>
     <p class="subtitle">Convert between nautical miles per hour and miles per hour</p>
